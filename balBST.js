@@ -77,31 +77,21 @@ class BSTNode {
     }
 
     add(newNode) {
-        if(newNode.key < this.key) {
-            if (this.left != null) { 
-                this.left.add(newNode);
-            }
-            else {
-                this.left = newNode;
-                newNode.parent = this;
-                newNode.updateHeight();
-                newNode.checkImbalance();
-            }
+        var dir;
+        if(newNode.key < this.key) dir = "left";
+        else if(newNode.key > this.key) dir = "right";
+        else return;
+        
+        if (this[dir] != null) {  
+            this[dir].add(newNode);
         }
-        else if(newNode.key > this.key) {
-            if (this.right != null) {  
-                this.right.add(newNode);
-            }
-            else {
-                this.right = newNode;
-                newNode.parent = this;
-                newNode.updateHeight();
-                newNode.checkImbalance();
-            }
+        else {
+            this[dir] = newNode;
+            newNode.parent = this;
+            newNode.updateHeight();
+            newNode.checkImbalance();
         }
-    }
-
-    
+    }    
 }
 
 function getRandom () {
