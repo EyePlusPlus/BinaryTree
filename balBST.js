@@ -54,35 +54,22 @@ class BSTNode {
 
     balance(dir) {
         if (dir) {
-            if (dir == "right") {
-                this.left.parent = this.parent;
-                if(this.parent) {
-                    this.parent.leftheight--;
-                    this.parent.left = this.left;
-                }
-                this.parent = this.left;
-                this.left = this.parent.right;
-                if (this.parent.right) this.parent.right.parent = this;
-                this.parent.right = this;
+            var antiDir = (dir == "right")? "left" : "right";
+            var dirHeight = dir+"height";
+            var antiDirHeight = antiDir+"height";
 
-                this.leftheight-=2;
-                this.parent.rightheight = this.rightheight+1;
+            this[antiDir].parent = this.parent;
+            if(this.parent) {
+                this.parent[antiDirHeight]--;
+                this.parent[antiDir] = this[antiDir];
             }
-            
-            if (dir == "left") {
-                this.right.parent = this.parent;
-                if(this.parent) {
-                    this.parent.rightheight--;
-                    this.parent.right = this.right;
-                }
-                this.parent = this.right;
-                this.right = this.parent.left;
-                if (this.parent.left) this.parent.left.parent = this;
-                this.parent.left = this;
+            this.parent = this[antiDir];
+            this[antiDir] = this.parent[dir];
+            if (this.parent[dir]) this.parent[dir].parent = this;
+            this.parent[dir] = this;
 
-                this.rightheight-=2;
-                this.parent.leftheight = this.leftheight+1;
-            }
+            this[antiDirHeight]-=2;
+            this.parent[dirHeight] = this[dirHeight]+1;
 
             if (BSTNode.root == this) BSTNode.root = this.parent;
         }
@@ -134,15 +121,15 @@ function getRandom () {
 // BSTNode.root.add(new BSTNode(24));
 // BSTNode.root.print();
 
-// var node = new BSTNode(50);
-// BSTNode.root = node;
-// BSTNode.root.add(new BSTNode(45));
-// BSTNode.root.add(new BSTNode(55));
-// BSTNode.root.add(new BSTNode(38));
-// BSTNode.root.add(new BSTNode(47));
-// BSTNode.root.add(new BSTNode(58));
-// BSTNode.root.add(new BSTNode(65));
-// BSTNode.root.add(new BSTNode(63));
-// BSTNode.root.add(new BSTNode(67));
-// BSTNode.root.add(new BSTNode(69));
-// BSTNode.root.print();
+var node = new BSTNode(50);
+BSTNode.root = node;
+BSTNode.root.add(new BSTNode(45));
+BSTNode.root.add(new BSTNode(55));
+BSTNode.root.add(new BSTNode(38));
+BSTNode.root.add(new BSTNode(47));
+BSTNode.root.add(new BSTNode(58));
+BSTNode.root.add(new BSTNode(65));
+BSTNode.root.add(new BSTNode(63));
+BSTNode.root.add(new BSTNode(67));
+BSTNode.root.add(new BSTNode(69));
+BSTNode.root.print();
