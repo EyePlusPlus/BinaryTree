@@ -28,13 +28,11 @@ class BSTNode {
         if (this.parent) {
             if (this.parent.left == this) {
                 if ((this.parent.leftheight - this.parent.rightheight) > 1) {
-                    console.log("Left Skew at ", this.parent.key);
                     rotateDir = "right";
                 }
             }
             else if (this.parent.right == this) {
                 if ((this.parent.leftheight - this.parent.rightheight) < -1) {
-                    console.log("Right Skew at ", this.parent.key);
                     rotateDir = "left";
                 }
             }
@@ -113,21 +111,15 @@ function getRandom () {
 // BSTNode.root.add(new BSTNode(24));
 // BSTNode.root.print();
 
-// var node = new BSTNode(50);
-// BSTNode.root = node;
-// BSTNode.root.add(new BSTNode(45));
-// BSTNode.root.add(new BSTNode(55));
-// BSTNode.root.add(new BSTNode(38));
-// BSTNode.root.add(new BSTNode(47));
-// BSTNode.root.add(new BSTNode(58));
-// BSTNode.root.add(new BSTNode(65));
-// BSTNode.root.add(new BSTNode(63));
-// BSTNode.root.add(new BSTNode(67));
-// BSTNode.root.add(new BSTNode(69));
-// BSTNode.root.print();
-
-var node = new BSTNode(81);
+var node = new BSTNode(50);
 BSTNode.root = node;
-BSTNode.root.add(new BSTNode(37));
-BSTNode.root.add(new BSTNode(53));
+BSTNode.root.add(new BSTNode(45));
+BSTNode.root.add(new BSTNode(55));
+BSTNode.root.add(new BSTNode(38));
+BSTNode.root.add(new BSTNode(47));
+BSTNode.root.add(new BSTNode(58));
+BSTNode.root.add(new BSTNode(65));
+BSTNode.root.add(new BSTNode(63));
+BSTNode.root.add(new BSTNode(67));
+BSTNode.root.add(new BSTNode(69));
 BSTNode.root.print();
